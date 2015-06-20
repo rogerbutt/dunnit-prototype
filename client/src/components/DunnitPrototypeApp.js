@@ -15,7 +15,24 @@ require('normalize.css');
 require('../styles/main.css');
 
 var DunnitPrototypeApp = React.createClass({
-  render: function() {
+  
+  getInitialState: function () {
+    return {
+      loggedIn: Auth.isLoggedIn()
+    };
+  },
+  
+  setStateOnAuth: function (loggedIn) {
+    this.setState({
+      loggedIn: loggedIn
+    });
+  },
+  
+  componentWillMount: function () {
+    Auth.onChange = this.setStateOnAuth.bind(this);
+  },
+  
+  render: function () {
     return (
       <div className='main'>
       	<NavBar />
