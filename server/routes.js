@@ -1,6 +1,6 @@
 'use strict';
 
-var errors = require('./componenets/errors');
+var errors = require('./components/errors');
 
 module.exports = function(app) {
 	
@@ -9,7 +9,7 @@ module.exports = function(app) {
 	app.use('/auth', require('./auth'));
 	
 	app.route('/:url(api|auth|components|app|bower_components|assets)/*')
-		.get(erros[404]);
+		.get(errors[404]);
 		
 	app.route('/*')
 		.get(function(req, res) {
