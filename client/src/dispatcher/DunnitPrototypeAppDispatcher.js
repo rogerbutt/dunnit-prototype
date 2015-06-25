@@ -1,4 +1,7 @@
-'use strict';
+(function () {
+  'use strict';
+}());
+
 
 var GoalConstants = require('../constants/GoalConstants');
 var UserConstants = require('../constants/UserConstants');

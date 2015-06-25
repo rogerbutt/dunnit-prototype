@@ -3,7 +3,7 @@
 var React = require('react/addons');
 var Navigation = require('react-router').Navigation;
 
-require('styles/SlideArea.sass');
+//require('styles/SlideArea.sass');
 
 var SlideArea = React.createClass({
 

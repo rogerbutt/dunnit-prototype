@@ -3,7 +3,7 @@
 var React = require('react/addons');
 
 
-require('styles/GoalPage.sass');
+//require('styles/GoalPage.sass');
 
 var GoalPage = React.createClass({
 

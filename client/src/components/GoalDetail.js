@@ -8,7 +8,7 @@ var UserStore = require('../stores/UserStore');
 var Discussion = require('./Discussion');
 var HabitRibbon = require('./HabitRibbon');
 
-require('styles/GoalDetail.sass');
+//require('styles/GoalDetail.sass');
 
 var GoalDetail = React.createClass({
   

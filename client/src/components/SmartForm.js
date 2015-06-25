@@ -4,7 +4,7 @@ var React = require('react/addons');
 
 var Slide = require('../mixins/Slide');
 
-require('styles/SmartForm.sass');
+//require('styles/SmartForm.sass');
 
 var SmartForm = React.createClass({
 

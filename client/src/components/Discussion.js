@@ -1,4 +1,7 @@
-'use strict';
+(function () {
+  'use strict';
+}());
+
 
 var React = require('react/addons');
 var GoalActionCreators = require('../actions/GoalActionCreators');

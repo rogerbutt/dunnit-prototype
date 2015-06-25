@@ -1,9 +1,8 @@
 'use strict';
 
 var React = require('react/addons');
-
-
-
+var UserStore = require('../stores/UserStore');
+var Auth = require('../utils/AuthService');
 
 var LoginComponent = React.createClass({
   
@@ -18,6 +17,9 @@ var LoginComponent = React.createClass({
     e.preventDefault();
     
     Auth.login(this.state.user, this.state.password)
+      .then(function() {
+        UserStore.getUser();
+      })
       .catch(function(err) {
         console.log("Error logging in", err);
       });
@@ -26,7 +28,7 @@ var LoginComponent = React.createClass({
   render: function () {
     return (
         <form role="form">
-        <div className="form-group>
+        <div className="form-group">
           <input type="text" />
           <input type="password" />
         </div>

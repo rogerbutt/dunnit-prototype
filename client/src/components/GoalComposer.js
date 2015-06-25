@@ -12,7 +12,7 @@ var Slide = require('../mixins/Slide');
 
 var ENTER_KEY_CODE = 13;
 
-require('styles/GoalComposer.sass');
+//require('styles/GoalComposer.sass');
 
 var GoalComposer = React.createClass({
 

@@ -5,7 +5,7 @@ var Router = require('react-router');
 var Navigation = require('react-router').Navigation;
 var Link = Router.Link;
 
-require('styles/Goal.sass');
+//require('styles/Goal.sass');
 
 var Goal = React.createClass({
 
@@ -16,7 +16,6 @@ var Goal = React.createClass({
   },
 
   render: function () {
-
 
     return (
         <div className="Goal">

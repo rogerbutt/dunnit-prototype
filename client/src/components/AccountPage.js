@@ -1,4 +1,6 @@
-'use strict';
+(function () {
+  'use strict';
+}());
 
 var React = require('react/addons');
 var Navigation = require('react-router').Navigation;
@@ -6,7 +8,7 @@ var Navigation = require('react-router').Navigation;
 var UserStore = require('../stores/UserStore');
 var UserActionCreators = require('../actions/UserActionCreators');
 
-require('styles/AccountPage.sass');
+//require('styles/AccountPage.sass');
 
 function getStateFromStores() {
 
@@ -14,7 +16,8 @@ function getStateFromStores() {
 
   return {
     user: u,
-    tempName: u.name
+    //tempName: u.name
+    tempName: "asdf"
   };
 }
 

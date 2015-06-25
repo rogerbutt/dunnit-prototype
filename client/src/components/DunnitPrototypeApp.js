@@ -9,6 +9,8 @@ var Link = Router.Link;
 
 var MainSection = require('./MainSection');
 var NavBar = require('./NavBar');
+var Auth = require('../utils/AuthService');
+var UserStore = require('../stores/UserStore');
 
 // CSS
 require('normalize.css');
@@ -18,7 +20,7 @@ var DunnitPrototypeApp = React.createClass({
   
   getInitialState: function () {
     return {
-      loggedIn: Auth.isLoggedIn()
+      loggedIn: UserStore.isLoggedIn()
     };
   },
   

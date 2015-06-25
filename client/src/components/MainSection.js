@@ -12,16 +12,21 @@ var UserStore = require('../stores/UserStore');
 
 var WelcomeMessageUtil = require('../utils/WelcomeMessageUtil');
 
-require('styles/MainSection.sass');
+//require('styles/MainSection.sass');
 
 function getStateFromStores() {
   
   var usr = UserStore.getUser();
+  var msg = "";
+  if (usr) {
+    console.log(usr);
+    msg = WelcomeMessageUtil.generate(usr);
+  }
   
   return {
     goals: GoalStore.getAll(),
     user: usr,
-    welcomeMsg: WelcomeMessageUtil.generate(usr)
+    welcomeMsg: msg
   };
 }
 

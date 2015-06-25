@@ -3,7 +3,7 @@
 var React = require('react/addons');
 
 
-require('styles/SearchItem.sass');
+//require('styles/SearchItem.sass');
 
 var SearchItem = React.createClass({
 

@@ -74,7 +74,7 @@ exports.me = function(req, res, next) {
 
   User.findOne({
     _id: userId
-  }, '-salt -hashedPassword').populate('ownedNotes boughtNotes').exec(function (err, user) {
+  }, '-salt -hashedPassword').exec(function (err, user) {
     if (err) return next(err);
     if (!user) return res.json(401);
     res.json(user);

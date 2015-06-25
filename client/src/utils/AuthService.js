@@ -1,4 +1,3 @@
-var Cookies = require('cookies-js');
 var request = require('superagent');
 
 var Auth = {
@@ -7,7 +6,7 @@ var Auth = {
 		
 		return new Promise(function (resolve, reject) {
 			request
-			.post('/auth/local', {
+			.post('http://localhost:9000/auth/local', {
 				email: user.email,
 				password: user.password
 			})
@@ -15,9 +14,7 @@ var Auth = {
 				if (res.status === 404) {
 					reject();
 				} else {
-					Cookies.set('token', res.token);
-					
-					resolve(JSON.parse(res.text));
+					resolve(res.token);
 				}
 			});
 		});

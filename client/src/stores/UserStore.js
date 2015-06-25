@@ -3,17 +3,14 @@
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var DunnitPrototypeAppDispatcher = require('../dispatcher/DunnitPrototypeAppDispatcher');
-var GoalConstants = require('../constants/GoalConstants');
+var UserConstants = require('../constants/UserConstants');
+var request = require('superagent');
 
-var ActionTypes = GoalConstants.ActionTypes;
+var ActionTypes = UserConstants.ActionTypes;
 
 var CHANGE_EVENT = 'user_change';
 
-var _user = {
-	'name': 'Butts Carlton',
-	'id': 1,
-	'goals': []
-};
+var _user = null;
 
 function updateUser (user) {
 	_user = user;
@@ -27,6 +24,10 @@ var UserStore = assign({}, EventEmitter.prototype, {
 
 	getUser: function () {
 		return _user;
+	},
+	
+	isLoggedIn: function () {
+		return !!_user;	
 	},
 
 	emitChange: function() {
@@ -52,6 +53,10 @@ var action = payload.action;
   		updateUser(action.user);
   		UserStore.emitChange();
   		break;
+	case ActionTypes.LOAD_USER:
+		_user = action.user;
+		UserStore.emitChange();
+		break;
 	case ActionTypes.ADD_USER_GOAL:
 		addGoalToUser(action.goalId);
 		UserStore.emitChange();

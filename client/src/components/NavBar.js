@@ -5,7 +5,7 @@ var Router = require('react-router');
 var Navigation = require('react-router').Navigation;
 var Link = Router.Link;
 
-require('styles/NavBar.sass');
+//require('styles/NavBar.sass');
 
 var NavBar = React.createClass({
 

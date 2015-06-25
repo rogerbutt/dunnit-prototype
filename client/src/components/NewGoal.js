@@ -9,7 +9,7 @@ var SmartForm = require('./SmartForm');
 var GoalActionCreators = require('../actions/GoalActionCreators');
 var GoalOptionSlide = require('./GoalOptionSlide');
 
-require('styles/NewGoal.sass');
+//require('styles/NewGoal.sass');
 
 var HabitRibbonOption = {
   additionFunction: function (data) {
