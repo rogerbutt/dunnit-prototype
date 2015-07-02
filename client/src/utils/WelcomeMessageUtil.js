@@ -5,8 +5,6 @@ function generateMessage (user) {
 	// Add name
 	msg += user.name + '. ';
 	
-	console.log(user);
-	
 	if (user.goals.length === 0) {
 		msg += 'You have no goals. Press New Goal to create a new goal.';
 	}

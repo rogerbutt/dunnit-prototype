@@ -18,7 +18,7 @@ var UserActionCreators = {
 		DunnitAppDispatcher.handleViewAction({
 			type: ActionTypes.ADD_USER_GOAL,
 			goalId: goalId
-		})
+		});
 	}
 
 };

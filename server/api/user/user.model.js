@@ -12,6 +12,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  goals: [String],
   hashedPassword: String,
   salt: String
 });

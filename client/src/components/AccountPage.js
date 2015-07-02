@@ -8,7 +8,7 @@ var Navigation = require('react-router').Navigation;
 var UserStore = require('../stores/UserStore');
 var UserActionCreators = require('../actions/UserActionCreators');
 
-//require('styles/AccountPage.sass');
+require('../styles/AccountPage.scss');
 
 function getStateFromStores() {
 
@@ -16,8 +16,7 @@ function getStateFromStores() {
 
   return {
     user: u,
-    //tempName: u.name
-    tempName: "asdf"
+    tempName: u.name
   };
 }
 

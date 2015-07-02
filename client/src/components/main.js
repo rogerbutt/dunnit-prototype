@@ -5,6 +5,7 @@ var NewGoal = require('./NewGoal');
 var MainSection = require('./MainSection');
 var AccountPage = require('./AccountPage');
 var GoalDetail = require('./GoalDetail');
+var LoginActions = require('../actions/LoginActionCreators');
 var LoginComponent = require('./LoginComponent');
 var RouterContainer = require('../utils/RouterContainer');
 var React = require('react');
@@ -27,9 +28,9 @@ var router = Router.create({routes: Routes});
 RouterContainer.set(router);
 
 var token = Cookies.get('token');
-/*if(token) {
-  LoginActions.loginUser(token);
-}*/
+if(token) {
+  LoginActions.loadUser(token);
+}
 
 var content = document.getElementById('content');
 

@@ -1,14 +1,18 @@
 var React = require('react/addons');
 var Navigation = require('react-router').Navigation;
+var UserStore = require('../stores/UserStore');
+var RouterContainer = require('./RouterContainer');
 
 function makeAuthenticatedComponent(Component) {
 	var AuthenticatedComponent = React.createClass({
 		
 		mixins: [Navigation],
 		
-		willTransitionTo: function () {
-	      if (!UserStore.isLoggedIn()) {
-	        this.transitionTo('/login');
+	    statics: {
+	      willTransitionTo: function(transition) {
+			if(!UserStore.isLoggedIn()) {
+				transition.redirect('/login', {}, {'nextPath' : transition.path});
+			}
 	      }
 	    },
 		
@@ -18,15 +22,26 @@ function makeAuthenticatedComponent(Component) {
 	      		data: {}
 	  		};
 	  	},
+		
+		_onChange: function () {
+			if (!UserStore.isLoggedIn()) {
+				RouterContainer.get().transitionTo('login');
+			}
+		},
+		  
+		componentDidMount: function () {
+			UserStore.addChangeListener(this._onChange);
+		},
 		  
 		render: function () {
 			return (
-				<Component>
-				</Component>
+				<Component />
 			)
 		}
 		
 	});
+	
+	return AuthenticatedComponent;
 }
 
-modules.exports = makeAuthenticatedComponent.bind(AuthenticatedComponent);
+module.exports = makeAuthenticatedComponent;

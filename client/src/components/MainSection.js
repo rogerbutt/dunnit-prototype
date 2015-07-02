@@ -10,6 +10,8 @@ var GoalStore = require('../stores/GoalStore');
 var GoalActionCreators = require('../actions/GoalActionCreators');
 var UserStore = require('../stores/UserStore');
 
+var AuthenticatedComponent = require('../utils/AuthenticatedComponent');
+
 var WelcomeMessageUtil = require('../utils/WelcomeMessageUtil');
 
 //require('styles/MainSection.sass');
@@ -19,7 +21,6 @@ function getStateFromStores() {
   var usr = UserStore.getUser();
   var msg = "";
   if (usr) {
-    console.log(usr);
     msg = WelcomeMessageUtil.generate(usr);
   }
   
@@ -32,7 +33,6 @@ function getStateFromStores() {
 
 function createFinishHandler (id) {
   return function (event) {
-    event.preventDefault();
     GoalActionCreators.finishGoal(id);
   };
 }
@@ -45,10 +45,12 @@ var MainSection = React.createClass({
 
   componentDidMount: function () {
     GoalStore.addChangeListener(this._onChange);
+    UserStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function () {
     GoalStore.removeChangeListener(this._onChange);
+    UserStore.removeChangeListener(this._onChange);
   },
 
   _onChange: function () {
@@ -74,5 +76,5 @@ var MainSection = React.createClass({
   }
 });
 
-module.exports = MainSection; 
+module.exports = AuthenticatedComponent(MainSection); 
 

@@ -20,6 +20,10 @@ function addGoalToUser (goal) {
 	_user.goals.push(goal);
 }
 
+function deleteUser () {
+	_user = null;
+}
+
 var UserStore = assign({}, EventEmitter.prototype, {
 
 	getUser: function () {
@@ -45,8 +49,8 @@ var UserStore = assign({}, EventEmitter.prototype, {
 });
 
 UserStore.dispatchToken = DunnitPrototypeAppDispatcher.register(function(payload) {
-
-var action = payload.action;
+  
+  var action = payload.action;
 
   switch(action.type) {
   	case ActionTypes.UPDATE_USER:
@@ -59,6 +63,10 @@ var action = payload.action;
 		break;
 	case ActionTypes.ADD_USER_GOAL:
 		addGoalToUser(action.goalId);
+		UserStore.emitChange();
+		break;
+	case ActionTypes.LOGOUT_USER:
+		deleteUser();
 		UserStore.emitChange();
 		break;
     default:

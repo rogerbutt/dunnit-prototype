@@ -109,8 +109,6 @@ var GoalStore = assign({}, EventEmitter.prototype, {
 GoalStore.dispatchToken = DunnitPrototypeAppDispatcher.register(function(payload) {
 
   var action = payload.action;
-  
-  console.log(action);
 
   switch(action.type) {
   	case ActionTypes.CREATE_GOAL:

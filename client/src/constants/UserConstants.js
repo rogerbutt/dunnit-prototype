@@ -5,7 +5,8 @@ module.exports = {
 	ActionTypes: keyMirror({
 		UPDATE_USER: null,
 		LOAD_USER: null,
-		ADD_USER_GOAL: null
+		ADD_USER_GOAL: null,
+		LOGOUT_USER: null
 	}),
 
 	PayloadSources: keyMirror({

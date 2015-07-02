@@ -7,14 +7,14 @@ var UserService = {
 		
 		return new Promise(function (resolve, reject) {
 			request
-			.set('Authorization', 'Bearer ' + Cookies.get('token'))
 			.get('http://localhost:9000/api/users/me')
-			.end(function (res) {
+			.set('Authorization', 'Bearer ' + Cookies.get('token'))
+			.end(function (err, res) {
 				if (res.status === 404) {
 					reject();
 				} else {
-					console.log(res);
-					resolve(res.data);
+					var data = JSON.parse(res.text);
+					resolve(data);
 				}
 			});
 		});

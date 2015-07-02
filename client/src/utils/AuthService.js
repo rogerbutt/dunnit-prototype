@@ -7,18 +7,24 @@ var Auth = {
 		return new Promise(function (resolve, reject) {
 			request
 			.post('http://localhost:9000/auth/local', {
-				email: user.email,
-				password: user.password
+				email: username,
+				password: password
 			})
-			.end(function (res) {
-				if (res.status === 404) {
+			.end(function (err, res) {
+				if (res && res.status === 404) {
 					reject();
 				} else {
-					resolve(res.token);
+					var data = JSON.parse(res.text);
+					resolve(data.token);
 				}
 			});
 		});
 		
+	},
+	
+	handleLogin: function(token) {
+		Cookies.set('token', token);
+		return UserService.getUser();
 	}
 	
 };
